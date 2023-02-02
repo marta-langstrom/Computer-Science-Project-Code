@@ -1,0 +1,135 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Welcome to this self-diagnostic survey. Note that you have to be at least of the age 18 to answer this questionnaire."); // question 1
+        System.out.println("Before you start please enter your age:"); // question 2
+        Scanner survey = new Scanner(System.in); // making a scanner to read the users input
+        int i = survey.nextInt();
+
+
+        if (i < 18) // removing people under the age of 18 from the survey // condition 1
+        {
+            System.out.println(" Unfortunately you are too young to answer this survey. Have a nice day");
+            System.exit(0); // removing people under 18 from the survey
+        }
+
+
+        System.out.println(" Welcome to our Covid-19 self-diagnostic survey. Please answer only with yes or no to the following questions:");
+        {
+            System.out.println(" Have you taken a home-test?"); // question 3
+            String c = survey.next();
+            if (c.equals("yes")) { // condition 2
+                System.out.println(" Was it positive?"); //question 1 for condition 2
+                String e = survey.next();
+                if (e.equals("yes")) // condition 3
+                    System.out.println(" Please proceed with this survey:");
+            }
+            if (c.equals("no")) {
+                System.out.println(" Consider taking a home test before answering this survey.");
+                System.out.println(" Would you like to exit this survey?"); // letting people leave the survey if they wish to, question 4
+                String d = survey.next();
+                if (d.equals("yes")) {// condition 4
+                    System.out.println(" Have a nice day :)");
+                    System.exit(0); // removing the person from the survey
+                }
+            }
+        }
+
+
+        {
+            System.out.println("Do you have a fever?"); // question  4
+            String a = survey.next();
+            if (a.equals("yes")) // condition 5
+                System.out.println(" Having a fever is a common symptom of Covid-19. However, having a fever is a symptom of many illnesses. Please answer some more questions:");
+            else if (a.equals("no")) //condition 6
+                System.out.println(" Although you don't have a fever you might still have covid-19. Please answer some more questions.");
+
+
+            {
+                System.out.println(" Are you experiencing headaches?"); // question 5
+                String b = survey.next();
+                if (b.equals("yes")) // condition 7
+                    System.out.println(" You might have covid, please answer some more questions.");
+                else if (b.equals("no"))  //condition 8
+                    System.out.println("Although you don't have a headache you might still have covid-19. Please answer some more questions. ");
+
+
+                {
+                    System.out.println(" Have you lost your sense of taste or smell ?"); // question 6
+                    String f = survey.next();
+                    if (f.equals("yes")) // condition 9
+                        System.out.println(" This is not such a common symptom of covid, but is a tell tail sign you would have it. One more question.");
+                    else if (f.equals("no")) //condition 10
+                        System.out.println(" This is not such a common symptom of covid, so even though you answered no to this question you might still have covid.");
+
+                }
+                {
+                    System.out.println(" Have you been exposed to Covid-19 ?"); // question 7
+                    String x = survey.next();
+                    if (x.equals("yes"))  // condition 11
+                        System.out.println(" You should seriously consider getting a proper test. ");
+                    else if (x.equals("no")) // condition 12
+                        System.out.println(" If you have answered yes to over three of the previous questions, you are strongly advised to get tested. ");
+
+
+                    {
+
+                        System.out.println(" Would you like to see the available times in Espoo for the upcoming Monday?"); // question 8
+                        String z = survey.next();
+                        if (z.equals("yes")) { // condition 14
+
+
+                            System.out.println(" Available times are 12:00, 12:15, 13:00. Please type out the time that would suit you best.");
+                            String[] times = {"12:00", "12:15", "13:00"};
+                            String o = survey.next();
+
+
+                            if (o.equals(times[0])) // condition 1  of condition 14
+                                System.out.println(" Time reserved, for Monday, in Espoo for 12:00. Have a nice day!");
+
+                            if (o.equals(times[1])) // condition 2  of condition 14
+                                System.out.println(" Time reserved, for Monday, in Espoo for 12:15. Have a nice day! ");
+
+                            if (o.equals(times[2])) // condition 3 of condition 14
+                                System.out.println(" Time reserved for Monday, in Espoo for 13:00. Have a nice day!");
+                            System.exit(0);
+
+
+                        }
+
+
+                        if (z.equals("no")) { //condition 15
+                            System.out.println(" Would you like to see other available dates in February?");
+                            String y = survey.next();
+
+                            if (y.equals("yes")) { // condition 1 for condition 15
+                                System.out.println("here are the available dates in February:");
+                                {
+                                    int u = 1; //repetition structure
+                                    while (u < 28) {
+                                        System.out.println(u + "  ");
+                                        u = u + 3;
+                                    }
+                                    {
+                                        System.out.println(" Thank you for taking your time with this survey.");
+                                        System.out.println(" To reserve a time for the days listed above in February, go to the website 'https://www.mehilainen.fi/koronavirus/koronavirustesti'");
+                                        System.exit(0);
+                                    }
+                                }
+                            }
+                            if (y.equals("no")) { // condition 2 for condition 15
+                                System.out.println("Okay thank you for taking your time with this survey. Remember to keep up with good hand hygiene and preferably wear a mask in crowded places.");
+                                System.exit(0); // removing the user from the survey
+                            }
+                        }
+
+
+                    }
+                }
+            }
+
+        }
+    }
+}
+
